@@ -13,7 +13,12 @@ import json
 @method_decorator(csrf_exempt, name='dispatch')
 class IndexView(View):
     def get(self, *args, **kwargs):
-        return HttpResponse("Index")
+        template_name = "index.html"
+        BD_player = Player.objects.all()
+        context = {
+            "list": BD_player
+        }
+        return render(self.request, template_name, context)
 
     @csrf_exempt
     def post(self, *args, **kwargs):
@@ -21,9 +26,12 @@ class IndexView(View):
             body = self.request.body.decode('utf-8')
             #body.replace(":", "")
             content = json.loads(body)
-            if not Player.objects.filter(Nome=content['Nome']).exists():
-                Player.objects.create(Nome=content['Nome'], Xp=content['Xp'], PosX=content['Pos']['X'], PosY=content['Pos']['Y'], PosZ=content['Pos']['Z'], Helmet=content['Armor']['Helmet'], Chestplate=content['Armor']['Chestplate'], Leggings=content['Armor']['Leggings'], Boot=content['Armor']['Boots'])
             print(content)
+            if not Player.objects.filter(Nome=content['Nome']).exists():
+                try:
+                    Player.objects.create(Nome=content['Nome'], Xp=content['Xp'], PosX=content['Pos']['X'], PosY=content['Pos']['Y'], PosZ=content['Pos']['Z'], Helmet=content['Armor']['Helmet'], Chestplate=content['Armor']['Chestplate'], Leggings=content['Armor']['Leggings'], Boot=content['Armor']['Boots'])
+                except Exception as e:
+                    print("Erro ao Salvar no Banco de dados: ", e)
             return HttpResponse("recebido")
         except:
             return HttpResponse("Algo deu de errado")

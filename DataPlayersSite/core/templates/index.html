@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <title>Index</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+    {% for i in list %}
+        <span>
+            <p>{{ i.Nome }}</p>
+            <p>{{ i.Xp }}</p>
+            <p>{{ i.PosX }}</p>
+            <p>{{ i.PosY }}</p>
+            <p>{{ i.PosZ }}</p>
+            {% if i.Helmet != "" %}
+                <img src="{% static 'img'%}/{{ i.Helmet }}.png">
+            {% endif %}
+
+            {% if i.Chestplate != "" %}
+                <img src="{% static 'img'%}/{{ i.Chestplate }}.png">
+            {% endif %}
+
+            {% if i.Leggings != "" %}
+                <img src="{% static 'img'%}/{{ i.Leggings }}.png">
+            {% endif %}
+
+            {% if i.Boot != "" %}
+                <img src="{% static 'img'%}/{{ i.Boot }}.png">
+            {% endif %}
+        </span>
+    {% endfor %}
+    </body>
+</html>
