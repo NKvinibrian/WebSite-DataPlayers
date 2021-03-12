@@ -4,31 +4,62 @@
     <head>
         <title>Index</title>
         <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     </head>
+
     <body>
-    {% for i in list %}
-        <span>
-            <p>{{ i.Nome }}</p>
-            <p>{{ i.Xp }}</p>
-            <p>{{ i.PosX }}</p>
-            <p>{{ i.PosY }}</p>
-            <p>{{ i.PosZ }}</p>
-            {% if i.Helmet != "" %}
-                <img src="{% static 'img'%}/{{ i.Helmet }}.png">
-            {% endif %}
+        <div class="cointaner">
+            <header>
+                <nav>
+                    <div class="menu">
+                        <ul>
+                            <li><a href="#" onclick="alert('ok')">Home</a></li>
+                            <li><a href="#">Our team</a></li>
+                            <li><a href="#">Projects</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <h1 class="server_name">Server Name</h1>
+            </header>
 
-            {% if i.Chestplate != "" %}
-                <img src="{% static 'img'%}/{{ i.Chestplate }}.png">
-            {% endif %}
+            <main>
+                <div class="players">
+                    {% for i in list %}
+                        <div class="user">
+                            <span>
+                                <p class="ts">{{ i.Nome }}</p>
+                                <p class="ts">{{ i.Xp }}</p>
+                                <p class="ts">{{ i.PosX }}</p>
+                                <p class="ts">{{ i.PosY }}</p>
+                                <p class="ts">{{ i.PosZ }}</p>
+                                {% if i.Helmet != "" %}
+                                    <img src="{% static 'img'%}/{{ i.Helmet }}.png">
+                                {% endif %}
 
-            {% if i.Leggings != "" %}
-                <img src="{% static 'img'%}/{{ i.Leggings }}.png">
-            {% endif %}
+                                {% if i.Chestplate != "" %}
+                                    <img src="{% static 'img'%}/{{ i.Chestplate }}.png">
+                                {% endif %}
 
-            {% if i.Boot != "" %}
-                <img src="{% static 'img'%}/{{ i.Boot }}.png">
-            {% endif %}
-        </span>
-    {% endfor %}
+                                {% if i.Leggings != "" %}
+                                    <img src="{% static 'img'%}/{{ i.Leggings }}.png">
+                                {% endif %}
+
+                                {% if i.Boot != "" %}
+                                    <img src="{% static 'img'%}/{{ i.Boot }}.png">
+                                {% endif %}
+                            </span>
+                        </div>
+                        <div class="list">
+                            <p>Aqui vai ser a lista</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </main>
+
+            <footer>
+                Rodapé
+            </footer>
+        </div>
     </body>
 </html>

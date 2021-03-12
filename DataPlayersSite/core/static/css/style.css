@@ -1,0 +1,124 @@
+*{margin: 0; padding: 0}
+
+
+@font-face{
+    font-family: Minecrafter;
+    font-style: normal;
+    src: local('Minecrafter'), url("fonts/Minecrafter.ttf")format("truetype");
+}
+
+.ts{
+    font-family: Minecrafter;
+    font-size: 20px;
+}
+
+.cointaner{
+    display: grid;
+    grid-template-columns: 1.0fr;   
+    grid-template-areas: 
+        "nav nav"
+        "base base"
+        "end end";
+    gap: 10px;
+    justify-content: center;
+}
+
+main{
+    grid-area: base;
+    background-color: #333333;
+    width: 80vw;
+    justify-self: center;
+    border-radius: 10px;
+}
+
+header{
+    grid-area: nav;
+    background-color: #333333;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.menu ul li a{
+    position: relative;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    margin-left: 20px;
+    top:40px;
+    white-space: nowrap;
+}
+.menu ul li a:hover{
+    color: rgba(255, 255, 255, 0.596);
+}
+li{
+    text-decoration: none;
+    list-style: none;
+}
+
+.menu ul{
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+}
+
+body{
+    background-color: rgb(19, 19, 19);
+}
+.server_name{
+    position: relative;
+    color: #fff;
+    font-family: Minecrafter;
+    text-align: center;
+    height: auto;
+    top: 30px;
+    white-space: nowrap;
+}
+.players{
+    grid-area: base;
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr;   
+    grid-template-areas: 
+        "con1 con2";
+    gap: 2px;
+    justify-content: center;
+}
+
+.user{
+    grid-area: con1;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    justify-self: right;
+    background-color: aqua;
+    width: 35vw;
+}
+
+.list{
+    grid-area: con2;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: brown;
+    width: 35vw;
+}
+
+footer{
+    grid-area: end;
+    background-color: chocolate;
+}
+@media only screen and (max-width:1200px){
+    .players{
+        justify-items: center;
+        grid-template-columns: 1.0fr;   
+        grid-template-areas: 
+            "con1"
+            "con2";
+    }
+    .user{
+        justify-self: center;
+        width: 70vw;
+    }
+    .list{
+        width: 70vw;
+    }
+}
